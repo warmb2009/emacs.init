@@ -139,7 +139,7 @@
     ("a49760e39bd7d7876c94ee4bf483760e064002830a63e24c2842a536c6a52756" default)))
  '(package-selected-packages
    (quote
-    (flymake-python-pyflakes py-yapf py-autopep8 go-mode w3m kotlin-mode hungry-delete smartparens popwin nodejs-repl monokai-theme js2-mode elpy color-theme chinese-pyim-greatdict chinese-pyim)))
+    (markdown-mode ac-html flymake-python-pyflakes py-yapf go-mode w3m kotlin-mode hungry-delete smartparens popwin nodejs-repl monokai-theme js2-mode elpy color-theme chinese-pyim-greatdict chinese-pyim)))
  '(safe-local-variable-values (quote ((conding . utf-8)))))
 ;;
 ;;set js mode
