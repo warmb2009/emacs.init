@@ -22,6 +22,8 @@
 			  nodejs-repl
 			  graphviz-dot-mode
 			  android-mode
+			  elpy
+			  web-mode
 			  ) "Default packages")
 
 (defun linkin/packages-installed-p ()
@@ -139,7 +141,7 @@
     ("a49760e39bd7d7876c94ee4bf483760e064002830a63e24c2842a536c6a52756" default)))
  '(package-selected-packages
    (quote
-    (markdown-mode ac-html flymake-python-pyflakes py-yapf go-mode w3m kotlin-mode hungry-delete smartparens popwin nodejs-repl monokai-theme js2-mode elpy color-theme chinese-pyim-greatdict chinese-pyim)))
+    (web-mode markdown-mode ac-html flymake-python-pyflakes py-yapf go-mode w3m kotlin-mode hungry-delete smartparens popwin nodejs-repl monokai-theme js2-mode elpy color-theme chinese-pyim-greatdict chinese-pyim)))
  '(safe-local-variable-values (quote ((conding . utf-8)))))
 ;;
 ;;set js mode
@@ -195,3 +197,58 @@
 (popwin-mode t)
 
 
+;;web-mode
+;;(require 'web-mode)
+;;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; settings
+;(defun my-web-mode-hook ()
+;  "Hooks for Web mode."
+  ;; indent setting
+;  (setq web-mode-markup-indent-offset 2)
+  ;; comment style setting
+;  (setq web-mode-comment-style 2))
+
+(add-hook 'web-mode-hook 'my-web-mode-hook)
+;; keybinding
+;(defun my-web-mode-keybinding ()
+;  "Settings for keybinding."
+;  (eal-define-keys
+;   '(web-mode-map)
+;   '(("C-c C-v" browse-url-of-file))))
+
+;(eval-after-load "web-mode"
+;  '(my-web-mode-keybinding))
+;(provide 'web-settings)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+)
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+
+;; content-aware auto-completion
+(setq web-mode-ac-sources-alist
+  '(("css" . (ac-source-css-property))
+    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+
+;;shortccuts
+(define-key web-mode-map (kbd "C-j") 'web-mode-tag-match)
+;;auto pair
+(setq web-mode-enable-auto-pairing t)
+;; current element highlight
+(setq web-mode-enable-current-element-highlight t)
+;; current column highlight
+(setq web-mode-enable-current-column-highlight t)
+
+(define-key web-mode-map (kbd "C-c C-v") 'browse-url-of-file)
