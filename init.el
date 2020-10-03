@@ -6,8 +6,8 @@
 ;自动安装包 
 (when(>= emacs-major-version 24)
   (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages") t)
+;  (package-initialize)
+  (add-to-list 'package-archives '("melpa" ."http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") t)
   )
 (require 'cl)
 ;;add whatever packages you want here
@@ -24,6 +24,7 @@
 			  android-mode
 			  elpy
 			  web-mode
+			  popwin
 			  ) "Default packages")
 
 (defun linkin/packages-installed-p ()
